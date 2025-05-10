@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url('../image/Vande_Bharat_Express_around_Mumbai.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container {
+    width: 500px; 
+    margin: 50px auto; 
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    position: absolute;
+    right: 100px; 
+   
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.tab {
+    background-color: #023c84;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.tab:hover {
+    background-color: #0156b8;
+}
+
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #023c84;
+    font-size: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+       /* Styles for the From-To fields to be on the same line */
+       /* Styles for the From-To fields to be on the same line */
+       .form-group.from-to {
+        display: flex;
+        align-items: flex-start; /* Align items at the start */
+        margin-bottom: 15px;
+    }
+    
+    .from-to .input-field {
+        flex: 1; /* Make each input field take equal space */
+        margin-right: 10px; /* Space between From and To fields */
+    }
+    
+    .from-to input {
+        padding: 10px;
+        width: 100%; /* Full width of input */
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    .arrow-icon {
+        font-size: 24px;
+        margin: 0 10px;
+        align-self: flex-end; /* Aligns arrow vertically centered */
+    }
+    
+    /* Remove the last margin-right on the last input field */
+    .from-to .input-field:last-child {
+        margin-right: 0;
+    }
+    
+.input-icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-icon input {
+    width: 45%; /* Adjusted width for 'From' and 'To' fields */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-icon i {
+    font-size: 20px;
+    color: #333;
+}
+
+.form-group input[type="date"] {
+    padding: 8px 10px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.checkbox-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    width: 48%; 
+}
+
+
+
+.search-button {
+    width: 100%;
+    padding: 10px;
+    background-color: orange;
+    border: none;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+.search-button:hover {
+    background-color: #ff6600;
+}
+
+
+/* Sticky Navbar */
+.navv {
+    position: fixed;
+    top: 0; /* Stick to the top of the page */
+    z-index: 999;
+    width: 100%;
+    background-color: rgb(1, 36, 134);
+    padding: 3px 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    z-index: 1000; /* High enough to stay above other content */
+}
+
+
+/* Navbar list items */
+.lii {
+    margin: 0 20px; /* Spacing between each navbar item */
+    display: inline-block;
+}
+
+/* Navbar links */
+.aa {
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    text-decoration: none;
+    padding: 10px 20px; /* Padding around each link */
+    display: inline-block;
+    font-size: 22px;
+    
+}
+
+/* Hover effect for links */
+.aa:hover {
+    background-color: rgb(255, 251, 251);
+    color: rgb(1, 36, 134); /* Bright green */
+}
+
+/* Active link effect */
+.aa:active {
+    font-weight: bold;
+}
+
+/* Container styling to add margin from the navbar */
+.container {
+    width: 500px;
+    margin: 100px auto; /* Ensure content is pushed below the navbar */
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+}
+   
+
+/* Modal Styles */
+.moda {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+   
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.moda-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 350px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.moda-content h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+.moda-content p {
+    margin: 10px;
+    font-size: 20px;
+    color: #020202;
+}
+
+.moda-content button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.moda-content button:hover {
+    background-color: #218838;
+}
+
+.sp{
+    color: #10a230;
+    margin: 10px;
+    font-size: 22px;
+    text-decoration: underline;
+}
+.sen{
+    margin-top: 10px;
+    color:  rgb(213, 108, 15);
+    font-size: 15px;
+}
+.send{
+    color: rgb(213, 108, 15);
+    font-size: 15px;
+}

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Ticket</title>
+    <link rel="stylesheet" href="styles/book_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px; /* Could be more or less, depending on screen size */
+            border-radius: 5px; /* Rounded corners */
+            text-align: center; /* Center text in modal */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* PNR Input */
+        .pnr-input,
+        .train-input {
+            width: calc(100% - 20px); /* Set the width of the input */
+            padding: 10px; /* Padding inside the input */
+            font-size: 16px; /* Font size for the input text */
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+            margin-bottom: 20px; /* Space below the input */
+        }
+
+        /* Submit Button Styles */
+        #submitPNR,
+        #submitTrain {
+            padding: 10px 20px;
+            background-color: #007BFF; /* Blue background */
+            color: white; /* White text */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            font-size: 16px; /* Font size */
+            transition: background-color 0.3s; /* Smooth background color transition */
+        }
+
+        #submitPNR:hover,
+        #submitTrain:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif; /* General font style */
+            margin: 0;
+            padding: 0;
+            
+        }
+        
+        .container {
+            padding: 20px;
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            margin-right: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .search-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .search-button:hover {
+            background-color: #218838;
+        }
+
+        /* From-To Fields */
+        .form-group.from-to {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .input-field {
+            flex: 1;
+        }
+
+        .input-field select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .arrow-icon {
+            margin: 0 10px;
+            font-size: 24px;
+            color: #555;
+        }
+
+        /* Navigation Styles */
+        .navv {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navv .lii {
+            float: left;
+        }
+
+        .navv .lii .aa {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navv .lii .aa:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul class="navv">
+            <li class="lii">
+                <a class="aa" href="home.html">Home</a>
+            </li>
+            <li class="lii">
+                <a class="aa" href="vande_bharat.html">Vande Bharat</a>
+            </li>
+            <li class="lii">
+                <a class="aa" href="about_us.html">About Us</a>
+            </li>
+            <li class="lii">
+                <a class="aa" href="contact_us.html">Contact Us</a>
+            </li>
+            <li class="lii">
+                <a class="aa" href="evalution.html">Cancel Booking</a>
+            </li>
+        </ul>
+    </div>
+    
+
+    <div class="container">
+        <div class="header">
+            <button style="background-color:rgb(4, 56, 200);" class="tab" id="pnrStatusBtn">PNR STATUS</button>
+            <button style="background-color:rgb(4, 56, 200);" class="tab" id="trainStatusBtn">TRAIN LIVE STATUS</button>
+        </div>
+        <div class="form-container">
+            <h1>BOOK TICKET</h1>
+            <form>
+                <!-- From and To fields aligned on the same line with labels on top -->
+                <div class="form-group from-to">
+                    <div class="input-field">
+                        <label for="from">From</label>
+                        <select id="from">
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Ahmedabad">Ahmedabad</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Varanasi">Varanasi</option>
+                        </select>
+                    </div>
+                    <i class="fas fa-arrow-right arrow-icon"></i> <!-- Arrow symbol between From and To -->
+                    <div class="input-field">
+                        <label for="to">To</label>
+                        <select id="to">
+                           
+                            <option value="Delhi">Delhi</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Ahmedabad">Ahmedabad</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Varanasi">Varanasi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="train">Train</label>
+                    <select id="train">
+                        <option value="Rajdhani_Express">Rajdhani Express (Mumbai to Delhi)</option>
+                        <option value="Duronto_Express">Duronto Express (Kolkata to Delhi)</option>
+                        <option value="Vande_Bharat">Vande Bharat Express (Delhi to Varanasi)</option>
+                        <option value="Shatabdi_Express">Shatabdi Express (Chennai to Bangalore)</option>
+                        <option value="Garib_Rath">Garib Rath Express (Mumbai to Jaipur)</option>
+                        <option value="Humsafar_Express">Humsafar Express (Hyderabad to Ahmedabad)</option>
+                        <option value="Intercity_Express">Intercity Express (Pune to Mumbai)</option>
+                        <option value="Deccan_Queen">Deccan Queen Express (Mumbai to Pune)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" value="2024-10-17">
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="class">Class</label>
+                    <select id="class">
+                        <option value="All_Classes">All Classes</option>
+                        <option value="First_AC">First AC</option>
+                        <option value="Second_AC">Second AC</option>
+                        <option value="Third_AC">Third AC</option>
+                        <option value="Sleeper_Class">Sleeper Class</option>
+                        <option value="Chair_Car">Chair Car</option>
+                        <option value="Third_AC_Economy">Third AC Economy</option>
+                        <option value="AC_Seating">AC Seating</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="quota">Quota</label>
+                    <select id="quota">
+                        <option value="General">General</option>
+                        <option value="Ladies">Ladies</option>
+                        <option value="Tatkal">Tatkal</option>
+                    </select>
+                </div>
+
+                
+
+                <button type="submit" class="search-button">BOOK</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- The PNR Modal -->
+    <div id="pnrModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Enter the 10-digit Number</h2>
+            <input type="text" id="pnr" class="pnr-input" placeholder="Enter 10 digit PNR" maxlength="10" pattern="\d{10}" required>
+            <button id="submitPNR">Submit</button>
+        </div>
+    </div>
+
+    <!-- The Train Live Status Modal -->
+    <div id="trainModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeTrainModal">&times;</span>
+            <h2>Enter Train Number or Name</h2>
+            <input type="text" id="train" class="train-input" placeholder="Enter Train Number or Name" required>
+            <button id="submitTrain">Submit</button>
+        </div>
+    </div>
+    <!-- Confirmation Modal -->
+<div id="confirmationModal" class="moda">
+    <div class="moda-content">
+        <h2>🎉Booking Confirmed🎉</h2>
+        <span class="sp">Payment Received</span>
+        <div class="sen">Your Ticket has been Send to your Email_Id </div>
+        <div class="send"> (For any Query <a href="contact_us.html" >Contact Us)</a></div>
+        <p><strong>From:</strong> <span id="modalFrom"></span></p>
+        <p><strong>To:</strong> <span id="modalTo"></span></p>
+        <p><strong>Train:</strong> <span id="modalTrain"></span></p>
+        <p><strong>Class:</strong> <span id="modalClass"></span></p>
+        <p><strong>Quota:</strong> <span id="modalQuota"></span></p>
+        
+        <button id="closeModalBtn">OK</button>
+    </div>
+</div>
+
+    <script>
+        // Get the modals
+        const pnrModal = document.getElementById("pnrModal");
+        const trainModal = document.getElementById("trainModal");
+
+        // Get the buttons that open the modals
+        const pnrBtn = document.getElementById("pnrStatusBtn");
+        const trainBtn = document.getElementById("trainStatusBtn");
+
+        // Get the <span> elements that close the modals
+        const pnrSpan = document.getElementsByClassName("close")[0];
+        const trainSpan = document.getElementById("closeTrainModal");
+
+        // When the user clicks the PNR button, open the PNR modal
+        pnrBtn.onclick = function() {
+            pnrModal.style.display = "block";
+        }
+
+        // When the user clicks the Train button, open the Train modal
+        trainBtn.onclick = function() {
+            trainModal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modals
+        pnrSpan.onclick = function() {
+            pnrModal.style.display = "none";
+        }
+
+        trainSpan.onclick = function() {
+            trainModal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modals, close them
+        window.onclick = function(event) {
+            if (event.target == pnrModal) {
+                pnrModal.style.display = "none";
+            }
+            if (event.target == trainModal) {
+                trainModal.style.display = "none";
+            }
+        }
+
+        // Submit PNR
+        document.getElementById("submitPNR").onclick = function() {
+            const pnrInput = document.getElementById("pnr").value;
+            if (pnrInput.length === 10 && /^\d{10}$/.test(pnrInput)) {
+                alert("PNR Submitted: " + pnrInput);
+                pnrModal.style.display = "none"; // Close modal after submission
+            } else {
+                alert("Please enter a valid 10-digit PNR number.");
+            }
+        };
+
+        // Submit Train Status
+        document.getElementById("submitTrain").onclick = function() {
+            const trainInput = document.getElementById("train").value;
+            if (trainInput.trim() !== "") {
+                alert("Train Submitted: " + trainInput);
+                trainModal.style.display = "none"; // Close modal after submission
+            } else {
+                alert("Please enter a valid train number or name.");
+            }
+        };
+
+        // JavaScript to limit checkbox selection to 2
+        const checkboxes = document.querySelectorAll('.limit-checkbox');
+        let checkedCount = 0;
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    checkedCount++;
+                } else {
+                    checkedCount--;
+                }
+
+                if (checkedCount >= 2) {
+                    checkboxes.forEach(box => {
+                        if (!box.checked) {
+                            box.disabled = true;
+                        }
+                    });
+                } else {
+                    checkboxes.forEach(box => {
+                        box.disabled = false;
+                    });
+                }
+            });
+        });
+            // Get elements
+    const confirmationModal = document.getElementById('confirmationModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    // Book button handler (simulated here)
+    document.querySelector('.search-button').addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get form values
+        const from = document.getElementById('from').value;
+        const to = document.getElementById('to').value;
+        const train = document.getElementById('train').value;
+        const travelClass = document.getElementById('class').value;
+        const quota = document.getElementById('quota').value;
+
+        // Set modal content
+        document.getElementById('modalFrom').textContent = from;
+        document.getElementById('modalTo').textContent = to;
+        document.getElementById('modalTrain').textContent = train;
+        document.getElementById('modalClass').textContent = travelClass;
+        document.getElementById('modalQuota').textContent = quota;
+
+        // Show modal
+        confirmationModal.style.display = 'block';
+    });
+
+    // Close modal on button click
+    closeModalBtn.addEventListener('click', function () {
+        confirmationModal.style.display = 'none';
+    });
+
+    // Close modal if clicked outside the modal
+    window.addEventListener('click', function (event) {
+        if (event.target == confirmationModal) {
+            confirmationModal.style.display = 'none';
+        }
+    });
+ 
+    </script>
+</body>
+</html>

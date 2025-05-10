@@ -1,0 +1,208 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black with opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.ok-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Transparent Login Box */
+.login-img-bg {
+    background-image: url('../image/81311757.webp'); /* Set the image as a background */
+    background-position: center; /* Center the image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed; /* Fixes the image relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;  /* 100% of the viewport width */
+    height: 100vh; /* 100% of the viewport height */
+    z-index: -1; /* Ensure the image appears behind the navbar */
+}
+
+/* Global Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #d3cfcf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Login Container */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Login Box */
+.login-box {
+    width: 300px;
+    text-align: center;
+}
+
+/* Title */
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.input-field {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-field label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Email and Password Fields */
+.email-input, .password-input {
+    position: relative;
+}
+
+.email-input input, .password-input input {
+    width: 100%;
+    padding: 10px;
+    padding-left: 35px; /* Leave space for the icon */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    background-color: #eee;
+}
+
+/* Icons within input fields */
+.email-input i, .password-input i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #999; /* Color of the icon */
+}
+
+.password-input i.fa-eye {
+    right: 10px;
+    left: auto;
+    cursor: default;
+}
+
+/* Forgot Password */
+.forgot-password {
+    text-align: right;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    color: darkred; /* Dark red for Forgot Password */
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #5e9ddf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-btn:hover {
+    background-color: #4c8ec9;
+}
+
+/* OR Divider */
+.or {
+    margin: 10px 0;
+    position: relative;
+    text-align: center;
+}
+
+.or::before, .or::after {
+    content: "";
+    width: 40%;
+    height: 1px;
+    background-color: #ccc;
+    position: absolute;
+    top: 50%;
+}
+
+.or::before {
+    left: 0;
+}
+
+.or::after {
+    right: 0;
+}
+
+/* Register Button */
+.register-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #5e9ddf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.register-btn:hover {
+    background-color: #4c8ec9;
+}

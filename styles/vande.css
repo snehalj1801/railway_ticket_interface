@@ -1,0 +1,172 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+/* Tab styling */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin: 25px;
+   
+   
+}
+
+.tab-button {
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #004080;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.tab-button:hover, .tab-button.active {
+    background-color: #004080;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse:collapse;
+    margin-top: 40px;  
+    margin-bottom: 100px; 
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 16px;
+    text-align: center;
+}
+
+th {
+    background-color: #004080;
+    color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #ddd;
+}
+
+td {
+    background-color: #f9f9ff;
+}
+.navvv {
+display: flex;
+justify-content: center;
+background-color: #004080;
+padding: 14px;
+}
+
+.navvv span {
+display: flex;
+padding-left: 0; /* Ensures no padding in the list */
+}
+
+.navvv li {
+margin: 0 20px;
+list-style: none;
+}
+
+.navvv a {
+color: white;
+text-decoration: none;
+font-size: 23px;
+}
+
+.navvv a:hover {
+    padding: 6px;
+    text-decoration: none;
+    background-color: rgb(255, 251, 251);
+    color: rgb(1, 36, 134); /* Bright green */
+}
+
+.navvv a:active {
+    font-weight: bold;
+    background-color: rgb(255, 251, 251);
+    color: rgb(1, 36, 134); /* Bright green */
+}
+
+header {
+background-color: #023c84;
+padding: 10px 0;
+
+}
+
+.logo {
+display: block;
+margin: 20px auto;
+width: 100px;
+}
+
+
+
+h2 {
+    margin: 20px;
+margin-bottom: 40px;
+text-decoration: underline;
+
+}
+
+p {
+line-height: 1.6;
+margin-bottom: 15px;
+}
+
+.contact-info {
+list-style: none;
+margin-top: 10px;
+}
+
+.contact-info li {
+margin: 10px 0;
+}
+.book-tickett-button {
+    position: relative; /* Changed from absolute to fixed */
+    left: 50%; /* Center horizontally */
+    bottom: 20px; /* Place 20px above the bottom of the viewport */
+    transform: translateX(-50%); /* Center the button */
+    padding: 15px 30px; /* Button padding */
+    font-size: 20px; /* Font size */
+    font-weight: bold;
+    color: rgb(255, 255, 255); /* Text color */
+    background-color: #023c84; /* Button background color */
+    border: 5px solid #023c84; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor changes to pointer */
+    z-index: 3; /* Ensure the button appears above other elements */
+}
+
+.book-tickett-button:hover {
+    background-color: rgb(255, 255, 255); /* Change background on hover */
+    color: #023c84;
+}
+
+.book-tickett-button:active {
+    font-weight: bold;
+    background-color: rgb(255, 255, 255); /* Change background on active */
+    color: #023c84;
+}
